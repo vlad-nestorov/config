@@ -1,0 +1,12 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Vlad Nestorov
+	email = vlad@nestorov.net
+
+[alias]
+	co = checkout
+	cobm = "!git checkout -b $1 origin/master" 
+	cmm = commit -m
+	com = checkout master
+	st = status
