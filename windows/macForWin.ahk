@@ -1,14 +1,13 @@
 ; Reverse scrolling
-WheelUp::
-    Send, {WheelDown Down}
-    Keywait, WheelUp
-    Send, {WheelDown Up}
-return
+#MaxHotkeysPerInterval 250
+WheelUp::WheelDown
+WheelDown::WheelUp
 
-WheelDown::
-    Send, {WheelUp Down}
-    Keywait, WheelDown
-    Send, {WheelUp Up}
+; Pretend RControl is a separate control key, by using 2 keystrokes in Intellij, first_keystroke=Control F9
+RControl::
+    Send {Control down}{F9}
+    Keywait RControl
+    Send {Control up}
 return
 
 ; Remap Ctrl-Q to Alt-F4
