@@ -8,15 +8,25 @@ function Get-MouseDeviceParameters {
 function Enable-FlipFlopWheel {
     [CmdletBinding()]
     param (
-        [Parameter()]
+        [Parameter(
+            Mandatory         = $true,
+            ValueFromPipeline = $true)]
         [Microsoft.Win32.RegistryKey]
-        $registryKey
+        $registryKeys
     )
-   Set-ItemProperty -Path $registryKey.PSPath -Name "FlipFlopWheel" -Value 1
+
+    Process {
+        ForEach ($registryKey in $registryKeys) {
+            Set-ItemProperty -Path $registryKey.PSPath -Name "FlipFlopWheel" -Value 1
+        }
+    }
 }
 
-Get-MouseDeviceParameters | ForEach-Object {
-    Enable-FlipFlopWheel -registryKey $_
-}
+#
+# BEGIN SCRIPT
+#
+
+Get-MouseDeviceParameters | Enable-FlipFlopWheel 
+
 
 Get-MouseDeviceParameters | Get-ItemProperty
