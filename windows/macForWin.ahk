@@ -1,11 +1,3 @@
-; Reverse scrolling, except on VDESK because Razer handles that for us
-#MaxHotkeysPerInterval 250
-#If (%A_ComputerName% != VDESK)
-    WheelUp::WheelDown
-    WheelDown::WheelUp
-
-#If
-
 ; Pretend RControl is a separate control key, by using 2 keystrokes in Intellij, first_keystroke=Control F9
 RControl::
     Send {Control down}{F9}
